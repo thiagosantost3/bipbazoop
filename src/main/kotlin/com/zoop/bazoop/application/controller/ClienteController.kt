@@ -53,7 +53,7 @@ class ClienteController {
         return ResponseEntity.ok(facade.alterarCliente(cliente))
     }
 
-    @GetMapping("/clientes")
+    @GetMapping("/lista")
     fun listarClientes(): ResponseEntity<List<ClienteTO>> {
         return ResponseEntity.ok(facade.obterTodosClientes())
     }
