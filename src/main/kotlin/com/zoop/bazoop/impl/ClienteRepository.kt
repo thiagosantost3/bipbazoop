@@ -13,20 +13,14 @@ class ClienteRepository {
     }
 
     fun obter(clienteId: Int): Cliente? {
-        for (cliente in database) {
-            if (cliente.id == clienteId) return cliente
-        }
 
-        return null
+        return database.firstOrNull { it.id == clienteId }
     }
 
-    fun excluir(clienteId: Int) {
-        for (i in database.indices) {
-            if (database[i].id == clienteId) {
-                database.removeAt(i)
-                return
-            }
-        }
+    fun excluir(clienteId: Int): Cliente {
+        database.firstOrNull { it.id == clienteId }
+        return database.removeAt(clienteId)
     }
+
     fun listar(): List<Cliente> = database
 }

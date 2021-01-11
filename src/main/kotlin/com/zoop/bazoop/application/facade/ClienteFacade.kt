@@ -12,36 +12,41 @@ import kotlin.random.Random
 @Component
 class ClienteFacade {
     @Autowired
-    lateinit var repository : ClienteRepository
-    fun obterTodosClientes() :List<ClienteTOResponse>{
+    lateinit var repository: ClienteRepository
+    fun obterTodosClientes(): List<ClienteTOResponse> {
 
         return listOf()
     }
+
     // TODO: 23/12/2020
     //criar cliente
-    fun criarCliente(request: ClienteTO): ClienteTOResponse{
+    fun criarCliente(request: ClienteTO): ClienteTOResponse {
         val cliente = request.toDomain()
         repository.salvar(cliente)
 
         return ClienteTOResponse.fromCliente(cliente)
+    }
+
+    fun obterCliente(id: Int): ClienteTOResponse {
+        return ClienteTOResponse.fromCliente(
+            repository.obter(id) ?: throw IllegalArgumentException("cliente não encontrado")
+        )
     }
 
     //deletar cliente
-    fun deletar(cliente: ClienteTO){
+    fun deletar(id: Int): ClienteTOResponse {
 
-
-        if (this.criarCliente(cliente) == cliente) {
-
-                    return
-        }
+        return ClienteTOResponse.fromCliente(
+            repository.excluir(id)
+        )
     }
-    fun alterarCliente(request: ClienteTO): ClienteTOResponse{
+
+    fun alterarCliente(request: ClienteTO): ClienteTOResponse {
         val cliente = request.toDomain()
         repository.salvar(cliente)
 
         return ClienteTOResponse.fromCliente(cliente)
     }
-
 
     //criar conta
     fun criarconta(contadigital: Contadigital): Contadigital {

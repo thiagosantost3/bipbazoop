@@ -9,6 +9,7 @@ import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -16,28 +17,33 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/bazoop", produces = [MediaType.APPLICATION_JSON_VALUE])
+@RequestMapping("/bazoop/clientes", produces = [MediaType.APPLICATION_JSON_VALUE])
 class ClienteController {
     @Autowired
     lateinit var facade: ClienteFacade
 // refatora
 
-    @PostMapping("/criarcliente")
+    @PostMapping
     fun criarCliente(@RequestBody cliente: ClienteTO): ResponseEntity<ClienteTOResponse> {
 
         return ResponseEntity.ok(facade.criarCliente(cliente))
     }
 
-    @PostMapping("/criarconta")
-    fun criarconta(@RequestBody contadigital: Contadigital): ResponseEntity<Contadigital> {
+    /*  @PostMapping("/criarconta")
+      fun criarconta(@RequestBody contadigital: Contadigital): ResponseEntity<Contadigital> {
 
-        return ResponseEntity.ok(facade.criarconta(contadigital))
+          return ResponseEntity.ok(facade.criarconta(contadigital))
+      }
+  */
+    @GetMapping("/{id}")
+    fun obterCliente(@PathVariable id: Int): ResponseEntity<ClienteTOResponse> {
+        return ResponseEntity.ok(facade.obterCliente(id))
     }
 
-    @DeleteMapping("/deletarcliente")
-    fun deletar(cliente: ClienteTO): ResponseEntity<Unit> {
+    @DeleteMapping("/{id}")
+    fun deletar(@PathVariable id: Int): ResponseEntity<ClienteTOResponse> {
 
-        return ResponseEntity.ok(facade.deletar(cliente))
+        return ResponseEntity.ok(facade.deletar(id))
     }
 
     //put alterar

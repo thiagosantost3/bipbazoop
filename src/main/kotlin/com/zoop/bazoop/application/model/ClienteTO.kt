@@ -24,7 +24,8 @@ class ClienteTOResponse : ClienteTO() {
     companion object {
         fun fromCliente(cliente: Cliente): ClienteTOResponse {
             //todo criar cliente to response tecnica todomain
-            return ClienteTOResponse().also { it.id= cliente.id
+            return ClienteTOResponse().also {
+                it.id = cliente.id
                 it.cpf = cliente.cpf.value
                 it.data = cliente.data
                 it.nome = cliente.nome
