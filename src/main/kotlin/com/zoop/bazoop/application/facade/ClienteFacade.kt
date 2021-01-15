@@ -43,7 +43,7 @@ class ClienteFacade {
 
     fun alterarCliente(request: ClienteTO): ClienteTOResponse {
         val cliente = request.toDomain()
-        repository.salvar(cliente)
+        repository.alterar(cliente)
 
         return ClienteTOResponse.fromCliente(cliente)
     }
