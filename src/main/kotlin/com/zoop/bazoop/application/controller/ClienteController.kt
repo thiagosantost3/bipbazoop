@@ -3,6 +3,7 @@ package com.zoop.bazoop.application.controller
 import com.zoop.bazoop.application.facade.ClienteFacade
 import com.zoop.bazoop.application.model.ClienteTO
 import com.zoop.bazoop.application.model.ClienteTOResponse
+import com.zoop.bazoop.application.model.MessageTO
 import com.zoop.bazoop.business.Contadigital
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
@@ -41,16 +42,16 @@ class ClienteController {
     }
 
     @DeleteMapping("/{id}")
-    fun deletar(@PathVariable id: Int): ResponseEntity<ClienteTOResponse> {
-
-        return ResponseEntity.ok(facade.deletar(id))
+    fun deletar(@PathVariable id: Int): ResponseEntity<MessageTO> {
+        facade.deletar(id)
+        return ResponseEntity.ok(MessageTO("Cliente excluido com sucesso!!"))
     }
 
     //put alterar
     @PutMapping("/{id}")
-    fun alterarcliente(cliente: ClienteTO): ResponseEntity<ClienteTOResponse> {
+    fun alterarcliente(@PathVariable id: Int ,@RequestBody cliente: ClienteTO): ResponseEntity<ClienteTOResponse> {
 
-        return ResponseEntity.ok(facade.alterarCliente(cliente))
+        return ResponseEntity.ok(facade.alterarCliente(id,cliente))
     }
 
     @GetMapping

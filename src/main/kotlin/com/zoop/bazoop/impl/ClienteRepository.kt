@@ -1,6 +1,5 @@
 package com.zoop.bazoop.impl
 
-import com.zoop.bazoop.application.model.ClienteTOResponse
 import model.Cliente
 import model.Cpf
 import org.springframework.stereotype.Repository
@@ -15,22 +14,19 @@ class ClienteRepository {
         return cliente
     }
 
-    fun obter(clienteId: Int): Cliente? {
+    fun obter(clienteId: Int): Cliente {
 
-        return database.firstOrNull { it.id == clienteId }
+        return database.firstOrNull { it.id == clienteId } ?: throw IllegalArgumentException("cliente não encontrado")
     }
 
-    fun excluir(clienteId: Int): Cliente {
-        database.firstOrNull { it.id == clienteId }
-        return database.removeAt(clienteId)
+    fun excluir(clienteId: Int) {
+
+      if(!database.removeIf { it.id == clienteId })  {throw IllegalArgumentException("cliente não encontrado")}
     }
+
     fun alterar(cliente: Cliente): Cliente {
-        database.firstOrNull { it.id == it.id }
-        return Cliente().also {
-            it.cpf = Cpf("")
-            it.data = LocalDate.now()
-            it.nome = ""
-        }
+
+        return cliente
     }
 
     fun listar(): List<Cliente> = database

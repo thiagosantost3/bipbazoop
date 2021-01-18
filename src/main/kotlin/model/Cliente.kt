@@ -1,4 +1,5 @@
 package model
+import com.zoop.bazoop.application.model.ClienteTO
 import java.time.LocalDate
 import java.util.Random
 
@@ -26,7 +27,14 @@ import java.util.Random
 
     }
 
+  fun alterar(clienteTO:ClienteTO){
+      this.also {
+          it.cpf = Cpf(clienteTO.cpf!!)
+          it.data = clienteTO.data!!
+          it.nome = clienteTO.nome!!
+      }
 
+  }
    // private fun validateCPFLength(cpf: String) = cpf.length == 11
 
 
