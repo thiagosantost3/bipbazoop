@@ -47,13 +47,13 @@ class ClienteController {
     }
 
     //put alterar
-    @PutMapping("/alterarcliente")
+    @PutMapping("/{id}")
     fun alterarcliente(cliente: ClienteTO): ResponseEntity<ClienteTOResponse> {
 
         return ResponseEntity.ok(facade.alterarCliente(cliente))
     }
 
-    @GetMapping("/lista")
+    @GetMapping
     fun listarClientes(): ResponseEntity<List<ClienteTO>> {
         return ResponseEntity.ok(facade.obterTodosClientes())
     }
