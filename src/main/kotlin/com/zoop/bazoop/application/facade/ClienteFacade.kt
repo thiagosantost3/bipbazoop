@@ -13,10 +13,11 @@ import kotlin.random.Random
 class ClienteFacade {
     @Autowired
     lateinit var repository: ClienteRepository
-    fun obterTodosClientes(request: ClienteTOResponse): List<ClienteTOResponse> {
-//TODO: n retorna nada
+    fun obterTodosClientes(): List<ClienteTOResponse> {
 
-        return listOf(request)
+
+        return repository.listar().map { ClienteTOResponse.fromCliente(it) }
+
     }
 
     // TODO: 23/12/2020
@@ -41,7 +42,7 @@ class ClienteFacade {
 
     fun alterarCliente(id: Int, request: ClienteTO): ClienteTOResponse {
         val cliente = repository.obter(id)
-        cliente.alterar(request)
+        request.alterar(cliente)
         repository.alterar(cliente)
 
         return ClienteTOResponse.fromCliente(cliente)

@@ -4,7 +4,6 @@ import com.zoop.bazoop.application.facade.ClienteFacade
 import com.zoop.bazoop.application.model.ClienteTO
 import com.zoop.bazoop.application.model.ClienteTOResponse
 import com.zoop.bazoop.application.model.MessageTO
-import com.zoop.bazoop.business.Contadigital
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
@@ -29,7 +28,7 @@ class ClienteController {
 
         return ResponseEntity.ok(facade.criarCliente(cliente))
     }
-
+//Todo criar um controlor de contas sempre vou precisar do do indentificardor do cliente
     /*  @PostMapping("/criarconta")
       fun criarconta(@RequestBody contadigital: Contadigital): ResponseEntity<Contadigital> {
 
@@ -55,7 +54,7 @@ class ClienteController {
     }
 
     @GetMapping
-    fun listarClientes(): ResponseEntity<List<ClienteTO>> {
+    fun listarClientes(): ResponseEntity<List<ClienteTOResponse>> {
         return ResponseEntity.ok(facade.obterTodosClientes())
     }
 }

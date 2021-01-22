@@ -8,6 +8,14 @@ open class ClienteTO {
     var nome: String? = null
     var cpf: String? = null
     var data: LocalDate? = null
+//todo refatora alterar e todomain para compartilhar a mesma logica
+    fun alterar(cliente: Cliente) {
+        cliente.also {
+            it.cpf = Cpf(cpf!!)
+            it.data = data!!
+            it.nome = nome!!
+        }
+    }
 
     fun toDomain(): Cliente {
         return Cliente().also {
