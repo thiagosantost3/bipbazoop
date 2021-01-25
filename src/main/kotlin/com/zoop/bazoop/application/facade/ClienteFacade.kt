@@ -48,16 +48,7 @@ class ClienteFacade {
         return ClienteTOResponse.fromCliente(cliente)
     }
 
-    //criar conta
-    fun criarconta(contadigital: Contadigital): Contadigital {
-        var cliente: Cliente
-        var saldo: Long = 0
-        var id: Long = Random.nextLong(100000000)
-        var Numconta: Int = java.util.Random().nextInt(1000) + 1
 
-        println("""seu saldo ${saldo}  seu id $id seu numConta $Numconta""")
-        return contadigital
-    }
 
     //  traduçao de cliente para  cliente response
 }

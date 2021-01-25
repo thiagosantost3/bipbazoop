@@ -1,6 +1,7 @@
 package com.zoop.bazoop.impl
 
 import com.zoop.bazoop.business.Contadigital
+import com.zoop.bazoop.domain.ClienteNaoEncontradoException
 import model.Cpf
 import org.springframework.stereotype.Repository
 import java.time.LocalDate
@@ -30,6 +31,21 @@ class ContaRepository {
     fun listar(): MutableList<Contadigital> = database
 
 
+   /* fun obter(clienteId: Int): model.Cliente {
+
+        return database.firstOrNull { it.id == clienteId } ?: throw ClienteNaoEncontradoException()
+    }
+    */
+    fun excluir(contaId: Int) {
+
+        if(!database.removeIf { it.id == contaId })  {throw ClienteNaoEncontradoException()
+        }
+    }
+
+    fun alterar(contadigital: Contadigital?): Contadigital? {
+
+        return contadigital
+    }
 }
 
 data class Cliente(

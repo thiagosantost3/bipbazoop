@@ -28,13 +28,7 @@ class ClienteController {
 
         return ResponseEntity.ok(facade.criarCliente(cliente))
     }
-//Todo criar um controlor de contas sempre vou precisar do do indentificardor do cliente
-    /*  @PostMapping("/criarconta")
-      fun criarconta(@RequestBody contadigital: Contadigital): ResponseEntity<Contadigital> {
 
-          return ResponseEntity.ok(facade.criarconta(contadigital))
-      }
-  */
     @GetMapping("/{id}")
     fun obterCliente(@PathVariable id: Int): ResponseEntity<ClienteTOResponse> {
         return ResponseEntity.ok(facade.obterCliente(id))
