@@ -23,33 +23,33 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/bazoop/contas", produces = [MediaType.APPLICATION_JSON_VALUE])
 class ContaController {
 
-    @Autowired
     lateinit var contafacade: ContaFacade
+
     //Todo criar um controlor de contas sempre vou precisar do do indentificardor do cliente
 
-    @PostMapping("/criarconta")
+    @PostMapping
     fun criarconta(@RequestBody contadigital: Contadigital): ResponseEntity<Contadigital> {
 
         return ResponseEntity.ok(contafacade.criarconta(contadigital))
     }
 //TODO trocartudopara contas
 
-    @GetMapping("/{id}")
-    fun obterConta(@PathVariable id: Int): ResponseEntity<ContaTOResponse?>? {
-        return contafacade.obterConta(id)?.let { ResponseEntity.ok(it) }
+    @GetMapping("/{contaId}")
+    fun obterConta(@PathVariable contaId: Int): ResponseEntity<ContaTOResponse?>? {
+        return contafacade.obterConta(contaId)?.let { ResponseEntity.ok(it) }
     }
 
-    @DeleteMapping("/{id}")
-    fun deletar(@PathVariable id: Int): ResponseEntity<MessageTO> {
-        contafacade.deletar(id)
+    @DeleteMapping("/{contaId}")
+    fun deletar(@PathVariable contaId: Int): ResponseEntity<MessageTO> {
+        contafacade.deletar(contaId)
         return ResponseEntity.ok(MessageTO("Cliente excluido com sucesso!!"))
     }
 
     //put alterar
-    @PutMapping("/{id}")
-    fun alterarConta(@PathVariable id: Int, @RequestBody contadigital: ContaTO): ResponseEntity<ContaTOResponse?>? {
+    @PutMapping("/{contaId}")
+    fun alterarConta(@PathVariable contaId: Int, @RequestBody contadigital: ContaTO): ResponseEntity<ContaTOResponse?>? {
 
-        return this.contafacade.alterarConta(id, contadigital)?.let { ResponseEntity.ok(it) }
+        return this.contafacade.alterarConta(contaId, contadigital)?.let { ResponseEntity.ok(it) }
     }
 
     @GetMapping
