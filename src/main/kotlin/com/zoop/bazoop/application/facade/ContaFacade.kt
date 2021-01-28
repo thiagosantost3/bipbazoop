@@ -30,7 +30,7 @@ class ContaFacade {
         println("""seu saldo ${saldo}  seu id $id seu numConta $Numconta""")
         return ContaTOResponse.fromConta(conta)
     }
-    
+
     fun obterConta(contaId: Int): ContaTOResponse? {
         return contarepository.obter(contaId)?.let {
             ContaTOResponse.fromConta(
