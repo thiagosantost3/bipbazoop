@@ -5,16 +5,11 @@ import com.zoop.bazoop.business.Tipo
 import java.time.LocalDate
 
 open class ContaTO {
-    var nome: String? = null
-    var cpf: String? = null
-    var data: LocalDate? = null
 
-        var id: Int? = null
-        var Numconta: Int? = null
-        var status: String? = null
-        var tipo: String? = null
-        var Saldo: Int? = null
-        var debito:Int? = null
+    var Numconta: Int? = null
+    var status: String? = null
+    var tipo: String? = null
+
     //todo refatora alterar e todomain para compartilhar a mesma logica
     fun alterar(contadigital: Contadigital) {
         contadigital.also {
@@ -32,18 +27,19 @@ open class ContaTO {
     }
 }
 
-    class ContaTOResponse : ContaTO() {
-        var contaId: Int = 0
+class ContaTOResponse : ContaTO() {
+    var contaId: Int = 0
 
-        companion object {
-            fun fromConta(contadigital: Contadigital): ContaTOResponse {
-                //todo criar cliente to response tecnica todomain
-                return ContaTOResponse().also {
-                    it.id = contadigital.id
-                    it.status = contadigital.status.toString()
-                    it.tipo = contadigital.tipo.toString()
+    companion object {
+        fun fromConta(contadigital: Contadigital): ContaTOResponse {
+            //todo criar cliente to response tecnica todomain
+            return ContaTOResponse().also {
 
-                }
+                it.status = contadigital.status.toString()
+                it.tipo = contadigital.tipo.toString()
+                it.contaId = contadigital.id
+                it.Numconta = contadigital.Numconta
             }
         }
     }
+}

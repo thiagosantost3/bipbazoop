@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/bazoop/contas", produces = [MediaType.APPLICATION_JSON_VALUE])
 class ContaController {
+    @Autowired
     lateinit var contafacade: ContaFacade
 
     //Todo criar um controlor de contas sempre vou precisar do do indentificardor do cliente
@@ -46,7 +47,10 @@ class ContaController {
 
     //put alterar
     @PutMapping("/{contaId}")
-    fun alterarConta(@PathVariable contaId: Int, @RequestBody contadigital: ContaTO): ResponseEntity<ContaTOResponse?>? {
+    fun alterarConta(
+        @PathVariable contaId: Int,
+        @RequestBody contadigital: ContaTO
+    ): ResponseEntity<ContaTOResponse?>? {
 
         return this.contafacade.alterarConta(contaId, contadigital)?.let { ResponseEntity.ok(it) }
     }

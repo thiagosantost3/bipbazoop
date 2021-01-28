@@ -8,17 +8,18 @@ import com.zoop.bazoop.business.Contadigital
 import com.zoop.bazoop.impl.ContaRepository
 import model.Cliente
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
 import kotlin.random.Random
 
+@Component
 class ContaFacade {
     @Autowired
     lateinit var contarepository: ContaRepository
     fun obterTodosContas(): List<ContaTOResponse> {
 
-
         return contarepository.listar().map { ContaTOResponse.fromConta(it) }
-
     }
+
     //criar conta
     fun criarconta(contadigital: ContaTO): ContaTOResponse {
 
