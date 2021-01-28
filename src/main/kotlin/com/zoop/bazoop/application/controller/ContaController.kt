@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/bazoop/contas", produces = [MediaType.APPLICATION_JSON_VALUE])
 class ContaController {
-
     lateinit var contafacade: ContaFacade
 
     //Todo criar um controlor de contas sempre vou precisar do do indentificardor do cliente

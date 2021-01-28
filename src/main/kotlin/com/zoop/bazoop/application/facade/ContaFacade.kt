@@ -1,5 +1,6 @@
 package com.zoop.bazoop.application.facade
 
+import com.zoop.bazoop.application.model.ClienteTO
 import com.zoop.bazoop.application.model.ClienteTOResponse
 import com.zoop.bazoop.application.model.ContaTO
 import com.zoop.bazoop.application.model.ContaTOResponse
@@ -19,15 +20,17 @@ class ContaFacade {
 
     }
     //criar conta
-    fun criarconta(contadigital: Contadigital): Contadigital {
+    fun criarconta(contadigital: ContaTO): ContaTOResponse {
 
         var saldo: Long = 0
         var id: Long = Random.nextLong(100000000)
         var Numconta: Int = java.util.Random().nextInt(1000) + 1
-
+        var conta = contadigital.toDomain()
+        contarepository.salvar(conta)
         println("""seu saldo ${saldo}  seu id $id seu numConta $Numconta""")
-        return contadigital
+        return ContaTOResponse.fromConta(conta)
     }
+    
     fun obterConta(contaId: Int): ContaTOResponse? {
         return contarepository.obter(contaId)?.let {
             ContaTOResponse.fromConta(
