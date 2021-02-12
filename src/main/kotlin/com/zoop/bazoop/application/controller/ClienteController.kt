@@ -29,22 +29,22 @@ class ClienteController {
         return ResponseEntity.ok(facade.criarCliente(cliente))
     }
 
-    @GetMapping("/{id}")
-    fun obterCliente(@PathVariable id: Int): ResponseEntity<ClienteTOResponse> {
-        return ResponseEntity.ok(facade.obterCliente(id))
+    @GetMapping("/{clienteId}")
+    fun obterCliente(@PathVariable clienteId: Int): ResponseEntity<ClienteTOResponse> {
+        return ResponseEntity.ok(facade.obterCliente(clienteId))
     }
 
-    @DeleteMapping("/{id}")
-    fun deletar(@PathVariable id: Int): ResponseEntity<MessageTO> {
-        facade.deletar(id)
+    @DeleteMapping("/{clienteId}")
+    fun deletar(@PathVariable clienteId: Int): ResponseEntity<MessageTO> {
+        facade.deletar(clienteId)
         return ResponseEntity.ok(MessageTO("Cliente excluido com sucesso!!"))
     }
 
     //put alterar
-    @PutMapping("/{id}")
-    fun alterarcliente(@PathVariable id: Int ,@RequestBody cliente: ClienteTO): ResponseEntity<ClienteTOResponse> {
+    @PutMapping("/{clienteId}")
+    fun alterarcliente(@PathVariable clienteId: Int, @RequestBody cliente: ClienteTO): ResponseEntity<ClienteTOResponse> {
 
-        return ResponseEntity.ok(facade.alterarCliente(id,cliente))
+        return ResponseEntity.ok(facade.alterarCliente(clienteId,cliente))
     }
 
     @GetMapping

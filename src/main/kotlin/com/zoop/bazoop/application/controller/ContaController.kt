@@ -1,12 +1,8 @@
 package com.zoop.bazoop.application.controller
-
 import com.zoop.bazoop.application.facade.ContaFacade
-import com.zoop.bazoop.application.model.ClienteTO
-import com.zoop.bazoop.application.model.ClienteTOResponse
 import com.zoop.bazoop.application.model.ContaTO
 import com.zoop.bazoop.application.model.ContaTOResponse
 import com.zoop.bazoop.application.model.MessageTO
-import com.zoop.bazoop.business.Contadigital
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
@@ -20,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/bazoop/contas", produces = [MediaType.APPLICATION_JSON_VALUE])
+@RequestMapping("/bazoop/clientes/{clienteId}/contas", produces = [MediaType.APPLICATION_JSON_VALUE])
 class ContaController {
     @Autowired
     lateinit var contafacade: ContaFacade
@@ -28,7 +24,9 @@ class ContaController {
     //Todo criar um controlor de contas sempre vou precisar do do indentificardor do cliente
 
     @PostMapping
-    fun criarconta(@RequestBody contadigital: ContaTO): ResponseEntity<ContaTOResponse> {
+    fun criarconta(
+        @RequestBody contadigital: ContaTO
+    ): ResponseEntity<ContaTOResponse> {
 
         return ResponseEntity.ok(contafacade.criarconta(contadigital))
     }
@@ -42,7 +40,7 @@ class ContaController {
     @DeleteMapping("/{contaId}")
     fun deletar(@PathVariable contaId: Int): ResponseEntity<MessageTO> {
         contafacade.deletar(contaId)
-        return ResponseEntity.ok(MessageTO("Cliente excluido com sucesso!!"))
+        return ResponseEntity.ok(MessageTO("Conta excluida com sucesso!!"))
     }
 
     //put alterar
