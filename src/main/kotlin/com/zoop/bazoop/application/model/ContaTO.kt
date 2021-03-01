@@ -2,6 +2,7 @@ package com.zoop.bazoop.application.model
 
 import com.zoop.bazoop.business.Contadigital
 import com.zoop.bazoop.business.Tipo
+import model.Cliente
 import java.time.LocalDate
 
 open class ContaTO {
@@ -20,7 +21,7 @@ open class ContaTO {
     }
 
     fun toDomain(): Contadigital {
-        return Contadigital().also {
+        return Contadigital(cliente = Cliente()).also {
             it.status = Contadigital.Status.ABERTA
             it.tipo = Tipo.CONTACOMUN
         }

@@ -3,7 +3,7 @@ package com.zoop.bazoop.domain.service
 import com.zoop.bazoop.business.Contadigital
 import model.Cliente
 
-class Extratomovimentacao(cliente: Cliente) : Contadigital() {
+class Extratomovimentacao(cliente: Cliente) : Contadigital(cliente) {
     fun Debito(debito : Int)
     {
 

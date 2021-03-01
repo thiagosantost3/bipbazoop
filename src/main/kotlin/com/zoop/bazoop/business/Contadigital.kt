@@ -1,8 +1,10 @@
 package com.zoop.bazoop.business
 
+import model.Cliente
 import java.util.Random
 
 open class Contadigital(
+    var cliente: Cliente,
     var id: Int = Random().nextInt(100000000),
     var Numconta: Int = Random().nextInt(1000) + 1,
     var status: Status = Status.ABERTA,

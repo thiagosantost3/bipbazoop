@@ -72,6 +72,10 @@ data class Cliente(
     }
     fun validarCpf(cliente: Cliente) {
 
+        var result = false
+        if (cpfIsValid(Cpf(cpf)) == true){
+
+        }
         TODO("Fazer validação do CPF")
     }
 }
