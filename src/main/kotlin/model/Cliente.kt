@@ -2,6 +2,7 @@ package model
 
 import com.zoop.bazoop.business.Contadigital
 import com.zoop.bazoop.domain.ClienteNaoEncontradoException
+import com.zoop.bazoop.domain.service.ContaCondicaoException
 import com.zoop.bazoop.domain.service.ContaException
 import java.time.LocalDate
 import java.util.Random
@@ -35,7 +36,7 @@ class Cliente(
         // mandar um exeçao de negocio
         // tratar controler,serviço,to
         else{
-            throw ContaException()
+            throw ContaCondicaoException()
         }
 
     }

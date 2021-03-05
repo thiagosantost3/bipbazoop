@@ -7,20 +7,22 @@ import org.springframework.stereotype.Service
 @Service
 class operacaoServiceImpl(
     private val repository: ContaRepository
-): operacaoService {
-   override fun credito(contadigital: Contadigital, valor: Int): Contadigital {
-       contadigital.Saldo = contadigital.Saldo + valor
-       print("agora vc tem ${contadigital.Saldo} de credito")
-       return repository.salvar(contadigital)
-   }
+) : operacaoService {
+    override fun credito(contadigital: Contadigital, valor: Int): Contadigital {
+        contadigital.Saldo = contadigital.Saldo + valor
+        print("agora vc tem ${contadigital.Saldo} de credito")
+        return repository.salvar(contadigital)
+    }
+
     override fun debito(contadigital: Contadigital, valor: Int): Contadigital {
         contadigital.Saldo = contadigital.Saldo - valor
         print("vc teve um debito de ${contadigital.debito} ")
         return repository.salvar(contadigital)
     }
+
     override fun transferencia(contaDebitada: Contadigital, contaCreditada: Contadigital, valor: Int): Contadigital {
-       // debito(contaDebitada, valor)
-      // credito(contaCreditada, valor)
+        // debito(contaDebitada, valor)
+        // credito(contaCreditada, valor)
 
         contaDebitada.Saldo = contaDebitada.Saldo - valor
         print("vc teve um debito de $valor e seu saldo e ${contaDebitada.Saldo}\n")
@@ -28,9 +30,6 @@ class operacaoServiceImpl(
         println("vc teve um credito de $valor e seu saldo e ${contaCreditada.Saldo} ")
         repository.salvar(contaCreditada)
         return repository.salvar(contaDebitada)
-
-
-
     }
 }
 /*Como vc debita o valor de uma conta?

@@ -1,4 +1,4 @@
 package com.zoop.bazoop.domain.service
 
-class ContaException : Exception("Voce não ode abrir mais contas"){
+class ContaException : Exception("Voce não possui conta para excluir") {
 }

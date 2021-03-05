@@ -15,9 +15,7 @@ class ClienteFacade {
     lateinit var repository: ClienteRepository
     fun obterTodosClientes(): List<ClienteTOResponse> {
 
-
         return repository.listar().map { ClienteTOResponse.fromCliente(it) }
-
     }
 
     // TODO: 23/12/2020
@@ -47,8 +45,6 @@ class ClienteFacade {
 
         return ClienteTOResponse.fromCliente(cliente)
     }
-
-
 
     //  traduçao de cliente para  cliente response
 }

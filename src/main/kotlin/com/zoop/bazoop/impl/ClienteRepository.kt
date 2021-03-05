@@ -22,7 +22,9 @@ class ClienteRepository {
 
     fun excluir(clienteId: Int) {
 
-      if(!database.removeIf { it.id == clienteId })  {throw ClienteNaoEncontradoException()}
+        if (!database.removeIf { it.id == clienteId }) {
+            throw ClienteNaoEncontradoException()
+        }
     }
 
     fun alterar(cliente: Cliente): Cliente {

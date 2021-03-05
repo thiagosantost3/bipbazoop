@@ -13,32 +13,26 @@ open class Contadigital(
     var debito: Int = 50
 ) {
     //gerar numeros automatico
-    
-    enum class Status
-    {
-        ABERTA,FECHADA
+
+    enum class Status {
+        ABERTA, FECHADA
     }
 
-
     fun fecharConta() {
-        var status : Status = Status.FECHADA
+        var status: Status = Status.FECHADA
         print("\nsua conta de numero : ${Numconta} conta foi fechada ")
     }
 
-    fun Pqrcode()
-    {
+    fun Pqrcode() {
     }
 
-    fun Consultarextrato()
-    {
-        print("\no numero da sua conta e : $Numconta ela esta $status e do tipo $tipo  seu saldo e $Saldo \n" )
-
+    fun Consultarextrato() {
+        print("\no numero da sua conta e : $Numconta ela esta $status e do tipo $tipo  seu saldo e $Saldo \n")
     }
-
 }
-enum class Tipo
-{
-    CONTACOMUN,CONTAVIP
+
+enum class Tipo {
+    CONTACOMUN, CONTAVIP
 }
 
 

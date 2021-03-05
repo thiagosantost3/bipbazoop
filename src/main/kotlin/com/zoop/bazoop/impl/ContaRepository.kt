@@ -2,6 +2,7 @@ package com.zoop.bazoop.impl
 
 import com.zoop.bazoop.business.Contadigital
 import com.zoop.bazoop.domain.ClienteNaoEncontradoException
+import com.zoop.bazoop.domain.service.ContaException
 import model.Cpf
 import org.springframework.stereotype.Repository
 import java.time.LocalDate
@@ -30,15 +31,15 @@ class ContaRepository {
 
     fun listar(): MutableList<Contadigital> = database
 
+    /* fun obter(clienteId: Int): model.Cliente {
 
-   /* fun obter(clienteId: Int): model.Cliente {
-
-        return database.firstOrNull { it.id == clienteId } ?: throw ClienteNaoEncontradoException()
-    }
-    */
+         return database.firstOrNull { it.id == clienteId } ?: throw ClienteNaoEncontradoException()
+     }
+     */
     fun excluir(contaId: Int) {
 
-        if(!database.removeIf { it.id == contaId })  {throw ClienteNaoEncontradoException()
+        if (!database.removeIf { it.id == contaId }) {
+            throw ContaException()
         }
     }
 
@@ -62,18 +63,16 @@ data class Cliente(
 
             print("Cliente com cpf valido")
             result = true
-        }else{
+        } else {
             println("Cliente com cpf invalido")
-
         }
         return result
-
-
     }
+
     fun validarCpf(cliente: Cliente) {
 
         var result = false
-        if (cpfIsValid(Cpf(cpf)) == true){
+        if (cpfIsValid(Cpf(cpf)) == true) {
 
         }
         TODO("Fazer validação do CPF")

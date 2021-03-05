@@ -5,7 +5,7 @@ import model.Cliente
 import org.springframework.stereotype.Service
 
 @Service
-class ClienteServiceImpl (
+class ClienteServiceImpl(
     private val repository: ClienteRepository
 ) : ClienteService {
     override fun criar(cliente: Cliente): Cliente {

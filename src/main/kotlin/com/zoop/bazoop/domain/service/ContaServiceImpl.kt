@@ -6,7 +6,7 @@ import model.Cliente
 import org.springframework.stereotype.Service
 
 @Service
-class ContaServiceImpl (
+class ContaServiceImpl(
     private val repository: ContaRepository
 ) : ContaService {
     override fun criarConta(cliente: Cliente): Contadigital {

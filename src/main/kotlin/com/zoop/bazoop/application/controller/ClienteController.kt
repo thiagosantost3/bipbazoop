@@ -42,9 +42,12 @@ class ClienteController {
 
     //put alterar
     @PutMapping("/{clienteId}")
-    fun alterarcliente(@PathVariable clienteId: Int, @RequestBody cliente: ClienteTO): ResponseEntity<ClienteTOResponse> {
+    fun alterarcliente(
+        @PathVariable clienteId: Int,
+        @RequestBody cliente: ClienteTO
+    ): ResponseEntity<ClienteTOResponse> {
 
-        return ResponseEntity.ok(facade.alterarCliente(clienteId,cliente))
+        return ResponseEntity.ok(facade.alterarCliente(clienteId, cliente))
     }
 
     @GetMapping
