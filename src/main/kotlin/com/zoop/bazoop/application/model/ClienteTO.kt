@@ -1,7 +1,7 @@
 package com.zoop.bazoop.application.model
 
 import model.Cliente
-import model.Cpf
+//import model.Cpf
 import java.time.LocalDate
 
 open class ClienteTO {
@@ -9,10 +9,9 @@ open class ClienteTO {
     var cpf: String? = null
     var data: LocalDate? = null
 
-    //todo refatora alterar e todomain para compartilhar a mesma logica
     fun alterar(cliente: Cliente) {
         cliente.also {
-            it.cpf = Cpf(cpf!!)
+            it.cpf = Cliente.Cpf(cpf!!)
             it.data = data!!
             it.nome = nome!!
         }
@@ -20,7 +19,7 @@ open class ClienteTO {
 
     fun toDomain(): Cliente {
         return Cliente().also {
-            it.cpf = Cpf(cpf!!)
+            it.cpf = Cliente.Cpf(cpf!!)
             it.nome = nome!!
             it.data = data!!
         }
@@ -35,9 +34,9 @@ class ClienteTOResponse : ClienteTO() {
             //todo criar cliente to response tecnica todomain
             return ClienteTOResponse().also {
                 it.clienteId = cliente.id
-                it.cpf = cliente.cpf.value
-                it.data = cliente.data
-                it.nome = cliente.nome
+                it.cpf=cliente.cpf.value
+                it.data=cliente.data
+                it.nome=cliente.nome
             }
         }
     }

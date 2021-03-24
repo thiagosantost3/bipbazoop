@@ -2,8 +2,9 @@ package com.zoop.bazoop.impl
 
 import com.zoop.bazoop.business.Contadigital
 import com.zoop.bazoop.domain.ClienteNaoEncontradoException
+import com.zoop.bazoop.domain.service.ContaCondicaoException
 import com.zoop.bazoop.domain.service.ContaException
-import model.Cpf
+//import model.Cpf
 import org.springframework.stereotype.Repository
 import java.time.LocalDate
 import kotlin.random.Random
@@ -31,15 +32,9 @@ class ContaRepository {
 
     fun listar(): MutableList<Contadigital> = database
 
-    /* fun obter(clienteId: Int): model.Cliente {
-
-         return database.firstOrNull { it.id == clienteId } ?: throw ClienteNaoEncontradoException()
-     }
-     */
     fun excluir(contaId: Int) {
 
-        if (!database.removeIf { it.id == contaId }) {
-            throw ContaException()
+        if(!database.removeIf { it.id == contaId })  {throw ContaException()
         }
     }
 
@@ -49,13 +44,16 @@ class ContaRepository {
     }
 }
 
+
+
+
 data class Cliente(
     val nome: String,
     val cpf: String,
     val nascimento: LocalDate,
     val id: Long = Random.nextLong(100000000)
 ) {
-    fun cpfIsValid(cpf: Cpf): Boolean {
+    fun cpfIsValid(cpf: model.Cliente.Cpf): Boolean {
 
         var result = false
 
@@ -63,18 +61,16 @@ data class Cliente(
 
             print("Cliente com cpf valido")
             result = true
-        } else {
+        }else{
             println("Cliente com cpf invalido")
+
         }
         return result
-    }
 
+
+    }
     fun validarCpf(cliente: Cliente) {
 
-        var result = false
-        if (cpfIsValid(Cpf(cpf)) == true) {
-
-        }
         TODO("Fazer validação do CPF")
     }
 }

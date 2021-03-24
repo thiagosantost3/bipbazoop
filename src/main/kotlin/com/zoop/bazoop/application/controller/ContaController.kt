@@ -25,11 +25,8 @@ class ContaController {
     //Todo criar um controlor de contas sempre vou precisar do do indentificardor do cliente
 
     @PostMapping
-    fun criarconta(
-        @RequestBody contadigital: ContaTO
-    ): ResponseEntity<ContaTOResponse> {
-
-        return ResponseEntity.ok(contafacade.criarconta(contadigital))
+    fun criarconta(@PathVariable clienteId: Int, @RequestBody contadigital: ContaTO): ResponseEntity<ContaTOResponse> {
+        return ResponseEntity.ok(contafacade.criarconta(clienteId,contadigital))
     }
 //TODO trocartudopara contas
 
@@ -44,7 +41,7 @@ class ContaController {
         return ResponseEntity.ok(MessageTO("Conta excluida com sucesso!!"))
     }
 
-    //put alterar
+    //put altera
     @PutMapping("/{contaId}")
     fun alterarConta(
         @PathVariable contaId: Int,

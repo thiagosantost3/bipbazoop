@@ -10,34 +10,23 @@ class operacaoServiceImpl(
 ) : operacaoService {
     override fun credito(contadigital: Contadigital, valor: Int): Contadigital {
         contadigital.Saldo = contadigital.Saldo + valor
-        print("agora vc tem ${contadigital.Saldo} de credito")
+        print("\n agora vc tem ${contadigital.Saldo} de credito \n")
         return repository.salvar(contadigital)
     }
 
     override fun debito(contadigital: Contadigital, valor: Int): Contadigital {
         contadigital.Saldo = contadigital.Saldo - valor
-        print("vc teve um debito de ${contadigital.debito} ")
+        print("\n vc teve um debito de ${contadigital.debito} \n")
         return repository.salvar(contadigital)
     }
 
     override fun transferencia(contaDebitada: Contadigital, contaCreditada: Contadigital, valor: Int): Contadigital {
-        // debito(contaDebitada, valor)
-        // credito(contaCreditada, valor)
 
         contaDebitada.Saldo = contaDebitada.Saldo - valor
-        print("vc teve um debito de $valor e seu saldo e ${contaDebitada.Saldo}\n")
+        print("\n vc teve um debito de $valor e seu saldo e ${contaDebitada.Saldo}\n")
         contaCreditada.Saldo = contaCreditada.Saldo + valor
-        println("vc teve um credito de $valor e seu saldo e ${contaCreditada.Saldo} ")
+        println("\n vc teve um credito de $valor e seu saldo e ${contaCreditada.Saldo} \n")
         repository.salvar(contaCreditada)
         return repository.salvar(contaDebitada)
     }
 }
-/*Como vc debita o valor de uma conta?
-conta.saldo = conta.saldo - valor
-
-Como vc credita um valor numa conta?
-conta.saldo = conta.saldo + valor
-
-Como vc transfere um valor entre duas contas?
-conta1.saldo = conta1.saldo - valor
-conta2.saldo = conta2.saldo + valor*/

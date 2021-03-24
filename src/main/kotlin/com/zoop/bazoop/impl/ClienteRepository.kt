@@ -2,9 +2,7 @@ package com.zoop.bazoop.impl
 
 import com.zoop.bazoop.domain.ClienteNaoEncontradoException
 import model.Cliente
-import model.Cpf
 import org.springframework.stereotype.Repository
-import java.time.LocalDate
 
 @Repository
 class ClienteRepository {
